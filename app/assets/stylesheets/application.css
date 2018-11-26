@@ -12,4 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= css/bootstrap.min 
+ *= require revolution/css/settings
+ *= require revolution/css/layers
+ *= require revolution/css/navigation
+ *= require css/shop-style
+ *= require css/plugins/plugins
  */
+
+ 
