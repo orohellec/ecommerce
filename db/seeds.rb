@@ -12,5 +12,4 @@ my_item = Item.new(image_url: Faker::Avatar.image, title: Faker::Ancient.god, de
 
 my_item.save
 
-
-end 
+end
