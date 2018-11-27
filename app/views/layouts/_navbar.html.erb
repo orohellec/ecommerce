@@ -1,0 +1,56 @@
+
+<div id="preloader">
+            <div id="preloader-inner"></div>
+        </div><!--/preloader-->
+
+        <!--top bar-->
+        <div class='top-bar clearfix light'>
+            <div class='container'>
+                <div class='float-sm-right'>
+                    <ul class='list-inline mb0'>
+                        <li class='list-inline-item'>
+                            <a href="#" class="social-icon-sm si-gray si-gray-round si-facebook">
+                                <i class="fa fa-facebook"></i>
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+
+                        <li class='list-inline-item'>
+                            <a href="#" class="social-icon-sm si-gray si-gray-round si-twitter">
+                                <i class="fa fa-twitter"></i>
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class='list-inline-item'>
+                            <a href="#" class="social-icon-sm si-gray si-gray-round si-instagram">
+                                <i class="fa fa-instagram"></i>
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class='list-inline-item'>
+                            <a href="#" class="social-icon-sm si-gray si-gray-round si-g-plus">
+                                <i class="fa fa-google-plus"></i>
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class='float-sm-left'>
+                    <ul class='list-inline mb0 links'>
+                        <% if current_user %>
+                            Logged in as <strong><%= current_user.email %></strong>.
+                        <li class='list-inline-item'><a>
+                            <%= link_to 'Edit profile', edit_user_registration_path %>
+                            <%= link_to "Logout", destroy_user_session_path, method: :delete %> </a>
+                        </li>
+                            <% else %>
+                        <li class='list-inline-item'><a>
+                            <%= link_to "Sign up", new_user_registration_path %> 
+                            <%= link_to "Login", new_user_session_path %></a>
+                        </li>
+                            <% end %>   
+                           
+                    </ul>
+                </div>
+            </div>
+        </div>
