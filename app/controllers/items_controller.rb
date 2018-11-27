@@ -12,15 +12,18 @@ class ItemsController < ApplicationController
 
     puts "==========================="
     puts User.all
-    puts params
+    puts "params[:id] ="
+    puts params[:id]
     puts "---------------------------"
     puts current_user
     puts "==========================="
     puts current_user[:id]
-    puts "+++++++++++++++++++++++++++"
-    cart_user = Cart.find_by(user_id: current_user[:id])
-    cart_user.
-    puts cart_user
+    puts "cart_user"
+  #  cart_user = Cart.create(user_id: current_user[:id])
+    puts "cart_content"
+  #  content_cart = CartsItem.create(item_id: Item.find(params[:id]), cart_id: cart_user)
+    puts 'cart.all'
+    puts Cart.all
 
 
 
