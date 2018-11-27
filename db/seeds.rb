@@ -5,10 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+#Item.destroy.all #à chaque db:seed supprime l'ancien et regénère de nouveaux seeds
+
 require 'faker'
 
-5.times do
-my_item = Item.new(image_url: Faker::Avatar.image, title: Faker::Ancient.god, description: Faker::Ancient.primordial, price: Faker::Number.decimal(2))
+20.times do
+my_item = Item.new(image_url: Faker::LoremPixel.image("300x300", true, 'cats'), title: Faker::Ancient.god, description: Faker::Ancient.primordial, price: Faker::Number.decimal(2))
 
 my_item.save
 
