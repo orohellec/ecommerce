@@ -15,4 +15,3 @@ Stripe.api_key = Rails.configuration.stripe[:secret_access_key]
 
 
 
-
