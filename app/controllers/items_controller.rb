@@ -8,41 +8,30 @@ class ItemsController < ApplicationController
   	@item = Item.find(params[:id])
   end
 
-  def add_item_to_cart
-    puts params
-    puts "==========================="
-    customer_cart =  Cart.where(user_id: current_user[:id])
-    item_id = params[:id].to_i
-    print "item_id = "
-    print item_id
-    puts ""
-    print "customer_cart id = "
-    test = customer_cart.ids[0]
-    print test
-
-    puts ""
-    CartsItem.create(cart_id: test, item_id: item_id)
-  #  customer_cart.create()
-
-    puts "params[:id] ="
-    puts params[:id]
-    puts "---------------------------"
-    puts current_user
-    puts "==========================="
-    puts current_user[:id]
-    puts "cart_user"
-  #  cart_user = Cart.create(user_id: current_user[:id])
-    puts "cart_content"
-  #  content_cart = CartsItem.create(item_id: Item.find(params[:id]), cart_id: cart_user)
-    puts 'cart.all'
-    puts Cart.all
-
-
-
-  #  @cart_user = Cart.find_by(user_id: )
+  def cart
+    @customer_cart = Cart.where(user_id: current_user[:id])
+    @items_id = CartsItem.where(cart_id: @customer_cart.ids[0]).pluck(:item_id)
+    @customer_items = Item.find(@items_id)
+    puts "---------------------------------"
+    puts @customer_items
+    puts "++++++++++++++++++++++++++++++++++"
+    puts @items_id.class
+    puts @items_id
+    puts Item.find(1)[:title]
   end
 
-  def delete_item_to_cart
+  def add_item_to_cart
+    customer_cart =  Cart.where(user_id: current_user[:id])
+    item_id = params[:id].to_i
+    cart_id = customer_cart.ids[0]
+    CartsItem.create(cart_id: cart_id, item_id: item_id)
+    redirect_to "/cart"
+  end
+
+  def delete_cart_item
+  end
+
+  def delete_all_cart_items
   end
 
   private
