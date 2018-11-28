@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   post "items/:id", to: "items#add_item_to_cart"
   devise_for :administrators
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: { registrations: 'users/registrations',
+                                    passwords: 'users/passwords',
+                                    confirmations: 'users/confirmations'}
 
 end
