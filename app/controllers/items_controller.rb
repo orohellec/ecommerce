@@ -22,8 +22,6 @@ class ItemsController < ApplicationController
 
     puts ""
     CartsItem.create(cart_id: test, item_id: item_id)
-
-
   #  customer_cart.create()
 
     puts "params[:id] ="
