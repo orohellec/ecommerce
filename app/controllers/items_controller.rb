@@ -16,6 +16,9 @@ class ItemsController < ApplicationController
     @customer_items.each do |item|
       result += item[:price]
     end
+    @customer_items.each do |item|
+      puts item[:title]
+    end
     @total_price = result
   end
 
