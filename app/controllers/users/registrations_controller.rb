@@ -12,12 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
    def create
      super do |resource|
-       puts "----------------------------------------------+++++++++++++++"
        new_user = User.last
-       puts "%%%%%%%%%%%%%%%%%%%%%%%%%%"
-       puts new_user[:first_name]
-       puts new_user[:id]
-       puts "%%%%%%%%%%%%%%%%%%%%%%%%%%"
        Cart.create(user_id: new_user[:id])
      end
    end
