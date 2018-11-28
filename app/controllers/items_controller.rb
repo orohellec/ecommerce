@@ -8,6 +8,28 @@ class ItemsController < ApplicationController
   	@item = Item.find(params[:id])
   end
 
+  def add_item_to_cart
+
+    puts "==========================="
+    puts User.all
+    puts params
+    puts "---------------------------"
+    puts current_user
+    puts "==========================="
+    puts current_user[:id]
+    puts "+++++++++++++++++++++++++++"
+    cart_user = Cart.find_by(user_id: current_user[:id])
+    cart_user.
+    puts cart_user
+
+
+
+  #  @cart_user = Cart.find_by(user_id: )
+  end
+
+  def delete_item_to_cart
+  end
+
   private
 
   def items_params
@@ -15,4 +37,3 @@ class ItemsController < ApplicationController
   end
 
 end
-
