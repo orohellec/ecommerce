@@ -9,9 +9,23 @@ class ItemsController < ApplicationController
   end
 
   def add_item_to_cart
-
+    puts params
     puts "==========================="
-    puts User.all
+    customer_cart =  Cart.where(user_id: current_user[:id])
+    item_id = params[:id].to_i
+    print "item_id = "
+    print item_id
+    puts ""
+    print "customer_cart id = "
+    test = customer_cart.ids[0]
+    print test
+
+    puts ""
+    CartsItem.create(cart_id: test, item_id: item_id)
+
+
+  #  customer_cart.create()
+
     puts "params[:id] ="
     puts params[:id]
     puts "---------------------------"
