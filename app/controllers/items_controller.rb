@@ -36,6 +36,20 @@ class ItemsController < ApplicationController
   def delete_all_cart_items
   end
 
+  def checkout
+    @customer_cart = Cart.where(user_id: current_user[:id])
+    @items_id = CartsItem.where(cart_id: @customer_cart.ids[0]).pluck(:item_id)
+    @customer_items = Item.find(@items_id)
+    result = 0
+    @customer_items.each do |item|
+      result += item[:price]
+    end
+    @total_price = result
+    puts "******************************************"
+    puts @total_price
+    puts "******************************************"
+  end
+
   private
 
   def items_params
