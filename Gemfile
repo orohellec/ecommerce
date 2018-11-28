@@ -6,6 +6,7 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 
+
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 # Use postgresql as the database for Active Record
@@ -65,5 +66,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise", "~> 4.5"
+
+gem "stripe", "~> 4.1"
+
+gem "railties", "~> 5.2"
 
 gem 'mailjet'
