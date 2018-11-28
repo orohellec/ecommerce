@@ -70,3 +70,5 @@ gem "devise", "~> 4.5"
 gem "stripe", "~> 4.1"
 
 gem "railties", "~> 5.2"
+
+gem 'mailjet'

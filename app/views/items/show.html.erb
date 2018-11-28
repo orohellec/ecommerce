@@ -1,6 +1,141 @@
-<h1><%= @item.title %></h1>
-<p><%= @item.description %></p>
-
 <p>
   <%= link_to "Revenir à l'index", items_path, class:"btn btn-default" %>
 </p>
+
+<!-- Pushy Menu -->
+<aside class="pushy pushy-right">
+    <div class="cart-content">
+        <div class="clearfix">
+            <a href="javascript:void(0)" class="pushy-link text-white-gray">Close</a>
+        </div>
+    </div>
+</aside>
+<!-- Site Overlay -->
+
+<div class="container pt90 pb60">
+    <div class='row align-items-center'>
+        <div class='col-md-7'>
+            <div id="js-grid-slider-thumbnail" class="cbp">
+                <div class="cbp-item">  
+                    <div class="cbp-caption">
+                        <div class="cbp-caption-defaultWrap">
+                        <a class="simple-hover">
+                            <img <%= image_tag @item.image_url %></img>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class='col-md-5'>
+            <h2><%= @item.title %></h2>
+            <div class='clearfix mb30'>
+                <span class='float-right'>
+                    <i class='fa fa-star text-warning'></i>
+                    <i class='fa fa-star text-warning'></i>
+                    <i class='fa fa-star text-warning'></i>
+                    <i class='fa fa-star text-warning'></i>
+                    <i class='fa fa-star-half-full text-warning'></i>
+                    (12 Reviews)
+                </span>
+                <h4 class='text-info'>$<%= @item.price %></h4>
+            </div>
+            <p>
+                <%= @item.description %>
+            </p>
+            <form method="post" class="pt20">
+                <h4><small>Quantity</small></h4>
+                <div class="quantity">
+                    <input type="button" class="minus" value="-">
+                    <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                    <input type="button" class="plus" value="+">
+                </div>
+                <%= button_to "Ajouter au panier", type: "button", class: "btn btn-primary btn-icon", action: "add_item_to_cart" %>
+
+            </form>
+        </div>
+    </div>
+    <div class="row pt70">
+        <div class="col-md-10 ml-auto mr-auto">
+            <div>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tabs-default justify-content-center mb30" role="tablist">
+                    <li class="nav-item" role="presentation"><a class="active nav-link" href="#t3" aria-controls="#t3" role="tab" data-toggle="tab"> Description</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#t4" aria-controls="#t4" role="tab" data-toggle="tab"> Additional Information</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#t5" aria-controls="#t5" role="tab" data-toggle="tab"> Feedback <sup>2</sup></a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active show fade" id="t3">
+                        Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="t4">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr><th>
+                                        Size:
+                                    </th>
+                                    <td>
+                                        Unique
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Colors
+                                    </th>
+                                    <td>
+                                        Sky Blue, Green, Red
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Material
+                                    </th>
+                                    <td>
+                                        100% Leather
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane show fade" id="t5">
+                        <div class="media mb40">
+                            <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
+                            <div class="media-body">
+                                <h5 class="mt-0 clearfix">
+                                    <span class="float-right">
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star-half-full  text-warning"></i>
+                                    </span>
+                                    Jane Doe</h5>
+                                Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            </div>
+                        </div>
+                        <div class="media mb40">
+                            <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
+                            <div class="media-body">
+                                <h5 class="mt-0 clearfix">
+                                    <span class="float-right">
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star text-warning"></i>
+                                        <i class="fa fa-star-half-full  text-warning"></i>
+                                    </span>
+                                    Marie-Template</h5>
+                                Mignonnerie ++++
+                            </div>
+                        </div><!--/review-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
