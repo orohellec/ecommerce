@@ -756,7 +756,7 @@ opacity:1
     font-weight:700;
     text-transform:uppercase;
     font-family:"Roboto Slab"
-    margin-bottom:5px;
+   /* margin-bottom:5px;*/
 }
 
 .erinyen .tp-tab-desc {
@@ -1409,7 +1409,7 @@ border-radius:6px;
     font-weight:700;
     text-transform:uppercase;
     font-family:"Roboto Slab"
-    margin-bottom:5px;
+    /*margin-bottom:5px;*/
 }
 
 .hebe .tp-tab-desc {
@@ -1721,7 +1721,7 @@ website:    http://www.themepunch.com
 }
 @media only screen and (max-width: 768px) {
   .hermes .tp-tab .tp-tab-title {font-size:12px;line-height:14px;}
-  .hermes .tp-tab-date {font-size:10px; line-height:12px;margin-bottom:5px;}
+  .hermes .tp-tab-date {font-size:10px; line-height:12px;/*margin-bottom:5px;*/}
   .hermes .tp-tab-content {padding:10px 10px 10px 20px;}
 }
 
