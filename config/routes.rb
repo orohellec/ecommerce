@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   devise_for :administrators
   devise_for :users
+  resources :charges, only: [:new, :create]
  
 end
