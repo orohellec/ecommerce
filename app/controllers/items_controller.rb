@@ -31,28 +31,42 @@ class ItemsController < ApplicationController
   end
 
   def delete_cart_item
-    puts params
-    customer_cart = Cart.where(user_id: current_user[:id])
-    customer_cart_id = customer_cart[:id]
-    item_id = Item.find(params[:id])
-    CartsItem.find_by(cart_id: customer_cart_id)
+     customer_cart = Cart.where(user_id: current_user[:id])
+     cart_id = customer_cart.ids[0]
+     item_id = Item.find(params[:id])
+     CartsItem.find_by(item_id: item_id, cart_id: cart_id).delete
+     redirect_to "/cart"
   end
 
   def delete_all_cart_items
+    customer_cart = Cart.where(user_id: current_user[:id])
+    cart_id = customer_cart.ids[0]
+    CartsItem.where(cart_id: cart_id).delete_all
+    redirect_to "/cart"
   end
 
   def checkout
-    @customer_cart = Cart.where(user_id: current_user[:id])
-    @items_id = CartsItem.where(cart_id: @customer_cart.ids[0]).pluck(:item_id)
-    @customer_items = Item.find(@items_id)
+    puts "+++++++++++++++++++++++++++++++++++++++++++++++"
+    customer_order = Order.create(user_id: current_user[:id])
+    customer_cart = Cart.where(user_id: current_user[:id])
+    cart_id = customer_cart.ids[0]
+    puts cart_id
+    items_id = CartsItem.where(cart_id: customer_cart.ids[0]).pluck(:item_id)
+    customer_items = Item.find(items_id)
+    puts customer_items
     result = 0
-    @customer_items.each do |item|
+    customer_items.each do |item|
       result += item[:price]
     end
-    @total_price = result
-    puts "******************************************"
-    puts @total_price
-    puts "******************************************"
+    total_price = result
+
+    customer_items.each do |item|
+      puts customer_order[:id]
+      puts item[:id]
+      OrdersItem.create(order_id: customer_order[:id], item_id: item[:id])
+    end
+    puts "++++++++++++++++++++++++++++++++++++++++++++++++"
+    CartsItem.where(cart_id: cart_id).delete_all
   end
 
   private
