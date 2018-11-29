@@ -17,7 +17,10 @@ def create
     	:amount      => @amount,
     	:description => 'Rails Stripe customer',
     	:currency    => 'usd'
-  	)
+	  )
+	  
+	  @email = charge["source"]["name"]
+	  UserCommandMailer.command(@email).deliver_now
 
 	rescue Stripe::CardError => e
   	flash[:error] = e.message

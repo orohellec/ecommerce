@@ -53,11 +53,16 @@
  <div class="pb20">
      <h3><small>Total - </small> <%= @total_price.to_s + " €" %> </h3>
  </div>
+<<<<<<< HEAD
  <% if @customer_items.size > 0 %>
     <%= button_to "Passer la commande", type: "button", class: "btn btn-primary btn-icon", action: "checkout" %>
  <% else %>
     <p>Votre panier est vide</p>
  <% end %>
+=======
+ 
+<%= button_to "Passer la commande", type: "button", class: "btn btn-primary btn-icon", action: "checkout" %>
+>>>>>>> 917470d41f2a5f4634398781f678734e61bc9347
 </div>
 </div>
 </div>

@@ -51,6 +51,7 @@ class ItemsController < ApplicationController
     items_id = CartsItem.where(cart_id: customer_cart.ids[0]).pluck(:item_id)
     customer_items = Item.find(items_id)
 
+<<<<<<< HEAD
       if (customer_items.size > 0)
         customer_order = Order.create(user_id: current_user[:id])
         result = 0
@@ -66,6 +67,10 @@ class ItemsController < ApplicationController
       # flash votre panier est vide
       puts "YYYYYYYEEEEEEEAAAAAAAAHHHHHHH MTF"
     end
+=======
+    redirect_to new_charge_path
+    
+>>>>>>> 917470d41f2a5f4634398781f678734e61bc9347
   end
 
   private
