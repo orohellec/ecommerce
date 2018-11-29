@@ -31,6 +31,11 @@ class ItemsController < ApplicationController
   end
 
   def delete_cart_item
+    puts params
+    customer_cart = Cart.where(user_id: current_user[:id])
+    customer_cart_id = customer_cart[:id]
+    item_id = Item.find(params[:id])
+    CartsItem.find_by(cart_id: customer_cart_id)
   end
 
   def delete_all_cart_items
