@@ -72,3 +72,4 @@ gem "stripe", "~> 4.1"
 gem "railties", "~> 5.2"
 
 gem 'mailjet'
+gem "font-awesome-rails"
