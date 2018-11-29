@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   post "items/:id", to: "items#add_item_to_cart"
   get "cart", to: "items#cart"
+  post "/cart", to: "items#checkout"
+  delete "/cart.:id", to: "items#delete_cart_item"
   devise_for :administrators
 
   resources :charges, only: [:new, :create]
+ 
 
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     passwords: 'users/passwords',

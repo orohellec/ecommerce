@@ -12,12 +12,14 @@ class ItemsController < ApplicationController
     @customer_cart = Cart.where(user_id: current_user[:id])
     @items_id = CartsItem.where(cart_id: @customer_cart.ids[0]).pluck(:item_id)
     @customer_items = Item.find(@items_id)
-    puts "---------------------------------"
-    puts @customer_items
-    puts "++++++++++++++++++++++++++++++++++"
-    puts @items_id.class
-    puts @items_id
-    puts Item.find(1)[:title]
+    result = 0
+    @customer_items.each do |item|
+      result += item[:price]
+    end
+    @customer_items.each do |item|
+      puts item[:title]
+    end
+    @total_price = result
   end
 
   def add_item_to_cart
@@ -29,9 +31,28 @@ class ItemsController < ApplicationController
   end
 
   def delete_cart_item
+    puts params
+    customer_cart = Cart.where(user_id: current_user[:id])
+    customer_cart_id = customer_cart[:id]
+    item_id = Item.find(params[:id])
+    CartsItem.find_by(cart_id: customer_cart_id)
   end
 
   def delete_all_cart_items
+  end
+
+  def checkout
+    @customer_cart = Cart.where(user_id: current_user[:id])
+    @items_id = CartsItem.where(cart_id: @customer_cart.ids[0]).pluck(:item_id)
+    @customer_items = Item.find(@items_id)
+    result = 0
+    @customer_items.each do |item|
+      result += item[:price]
+    end
+    @total_price = result
+    puts "******************************************"
+    puts @total_price
+    puts "******************************************"
   end
 
   private
