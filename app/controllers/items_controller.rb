@@ -8,41 +8,51 @@ class ItemsController < ApplicationController
   	@item = Item.find(params[:id])
   end
 
-  def add_item_to_cart
-    puts params
-    puts "==========================="
-    customer_cart =  Cart.where(user_id: current_user[:id])
-    item_id = params[:id].to_i
-    print "item_id = "
-    print item_id
-    puts ""
-    print "customer_cart id = "
-    test = customer_cart.ids[0]
-    print test
-
-    puts ""
-    CartsItem.create(cart_id: test, item_id: item_id)
-  #  customer_cart.create()
-
-    puts "params[:id] ="
-    puts params[:id]
-    puts "---------------------------"
-    puts current_user
-    puts "==========================="
-    puts current_user[:id]
-    puts "cart_user"
-  #  cart_user = Cart.create(user_id: current_user[:id])
-    puts "cart_content"
-  #  content_cart = CartsItem.create(item_id: Item.find(params[:id]), cart_id: cart_user)
-    puts 'cart.all'
-    puts Cart.all
-
-
-
-  #  @cart_user = Cart.find_by(user_id: )
+  def cart
+    @customer_cart = Cart.where(user_id: current_user[:id])
+    @items_id = CartsItem.where(cart_id: @customer_cart.ids[0]).pluck(:item_id)
+    @customer_items = Item.find(@items_id)
+    result = 0
+    @customer_items.each do |item|
+      result += item[:price]
+    end
+    @customer_items.each do |item|
+      puts item[:title]
+    end
+    @total_price = result
   end
 
-  def delete_item_to_cart
+  def add_item_to_cart
+    customer_cart =  Cart.where(user_id: current_user[:id])
+    item_id = params[:id].to_i
+    cart_id = customer_cart.ids[0]
+    CartsItem.create(cart_id: cart_id, item_id: item_id)
+    redirect_to "/cart"
+  end
+
+  def delete_cart_item
+    puts params
+    customer_cart = Cart.where(user_id: current_user[:id])
+    customer_cart_id = customer_cart[:id]
+    item_id = Item.find(params[:id])
+    CartsItem.find_by(cart_id: customer_cart_id)
+  end
+
+  def delete_all_cart_items
+  end
+
+  def checkout
+    @customer_cart = Cart.where(user_id: current_user[:id])
+    @items_id = CartsItem.where(cart_id: @customer_cart.ids[0]).pluck(:item_id)
+    @customer_items = Item.find(@items_id)
+    result = 0
+    @customer_items.each do |item|
+      result += item[:price]
+    end
+    @total_price = result
+    puts "******************************************"
+    puts @total_price
+    puts "******************************************"
   end
 
   private
