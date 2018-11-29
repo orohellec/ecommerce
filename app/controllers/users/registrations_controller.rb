@@ -13,10 +13,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # méthode Olivier 
    def create
      super 
-    #  do |resource|
-    #    new_user = User.last
-    #    Cart.create(user_id: new_user[:id])
-    #  end
+     do |resource|
+       new_user = User.last
+       Cart.create(user_id: new_user[:id])
+     end
    end
    
   # GET /resource/edit
