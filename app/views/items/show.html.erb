@@ -16,7 +16,7 @@
     <div class='row align-items-center'>
         <div class='col-md-7'>
             <div id="js-grid-slider-thumbnail" class="cbp">
-                <div class="cbp-item">  
+                <div class="cbp-item">
                     <div class="cbp-caption">
                         <div class="cbp-caption-defaultWrap">
                         <a class="simple-hover">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-       
+
         <div class='col-md-5'>
             <h2><%= @item.title %></h2>
             <div class='clearfix mb30'>
@@ -45,14 +45,11 @@
                 <%= @item.description %>
             </p>
             <form method="post" class="pt20">
-                <h4><small>Quantity</small></h4>
-                <div class="quantity">
-                    <input type="button" class="minus" value="-">
-                    <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                    <input type="button" class="plus" value="+">
-                </div>
+              <% if current_user %>
                 <%= button_to "Ajouter au panier", type: "button", class: "btn btn-primary btn-icon", action: "add_item_to_cart" %>
-
+              <% else %>
+                <p>Connectez vous pour effectuer un achat</p>
+              <% end %>
             </form>
         </div>
     </div>
@@ -138,4 +135,3 @@
         </div>
     </div>
 </div>
-
