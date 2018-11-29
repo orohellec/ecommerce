@@ -11,14 +11,17 @@
                 <h3>Cats Items</h3>
             </div>
             <div class="row">
+                  
+
             	<% @items.each do |item| %>
                 <div class="col-md-6 col-lg-3 mb40">
                     <a href="<%= item_path(item.id)%>" class="simple-hover">
-                        <img <%= image_tag item.image_url %></img>
+                        <img> <%= image_tag @item.image %></img>
                     </a>
                     <div class="clearfix product-meta">
                         <p class="lead mb0"><a href="<%= item_path(item.id)%>"><%= item.title %></a></p>
                         <h4 class=""> $<%= item.price %> </h4>
+                     
                     </div>
                 </div>
                 <% end %>
@@ -27,8 +30,7 @@
 
         <!--back to top-->
         <a href="#" class="back-to-top hidden-xs-down" id="back-to-top"><i class="ti-angle-up"></i></a>
-    </body>
 
 
 
-
+          <%= link_to "edit image", items_form_path %>
