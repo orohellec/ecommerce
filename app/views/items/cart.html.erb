@@ -15,9 +15,7 @@
 </div>
 <div class="container pb60">
     <h4 class="font300 mb30">
-        <a href="#" class="btn btn-dark float-right">Empty Cart</a>
-        You have 3 items in your cart
-
+        <%= link_to 'Vider le panier', cart_path, class: "btn btn-dark float-right", method: :delete %>
     </h4>
     <table class="table table-condensed table-responsive cart-table mb40">
         <thead>
@@ -53,7 +51,7 @@
 </div>
 <div class="col-sm-6 text-right">
  <div class="pb20">
-     <h3><small>Total - </small> <%= @total_price %> </h3>
+     <h3><small>Total - </small> <%= @total_price.to_s + " €" %> </h3>
  </div>
 <%= button_to "Ajouter au panier", type: "button", class: "btn btn-primary btn-icon", action: "checkout" %>
 </div>

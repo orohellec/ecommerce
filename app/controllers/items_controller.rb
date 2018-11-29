@@ -31,14 +31,18 @@ class ItemsController < ApplicationController
   end
 
   def delete_cart_item
-    puts params
-    customer_cart = Cart.where(user_id: current_user[:id])
-    customer_cart_id = customer_cart[:id]
-    item_id = Item.find(params[:id])
-    CartsItem.find_by(cart_id: customer_cart_id)
+     customer_cart = Cart.where(user_id: current_user[:id])
+     cart_id = customer_cart.ids[0]
+     item_id = Item.find(params[:id])
+     CartsItem.find_by(item_id: item_id, cart_id: cart_id).delete
+     redirect_to "/cart"
   end
 
   def delete_all_cart_items
+    customer_cart = Cart.where(user_id: current_user[:id])
+    cart_id = customer_cart.ids[0]
+    puts CartsItem.where(cart_id: cart_id).delete_all
+    redirect_to "/cart"
   end
 
   def checkout
