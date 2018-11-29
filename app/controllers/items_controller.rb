@@ -67,6 +67,9 @@ class ItemsController < ApplicationController
     end
     puts "++++++++++++++++++++++++++++++++++++++++++++++++"
     CartsItem.where(cart_id: cart_id).delete_all
+  
+    redirect_to new_charge_path
+
   end
 
   private
