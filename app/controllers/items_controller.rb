@@ -46,21 +46,26 @@ class ItemsController < ApplicationController
   end
 
   def checkout
-    customer_order = Order.create(user_id: current_user[:id])
     customer_cart = Cart.where(user_id: current_user[:id])
     cart_id = customer_cart.ids[0]
     items_id = CartsItem.where(cart_id: customer_cart.ids[0]).pluck(:item_id)
     customer_items = Item.find(items_id)
-    result = 0
-    customer_items.each do |item|
-      result += item[:price]
-    end
-    total_price = result
-    customer_items.each do |item|
-      OrdersItem.create(order_id: customer_order[:id], item_id: item[:id])
-    end
-    CartsItem.where(cart_id: cart_id).delete_all
 
+      if (customer_items.size > 0)
+        customer_order = Order.create(user_id: current_user[:id])
+        result = 0
+        customer_items.each do |item|
+        result += item[:price]
+        end
+        total_price = result
+        customer_items.each do |item|
+        OrdersItem.create(order_id: customer_order[:id], item_id: item[:id])
+        end
+        CartsItem.where(cart_id: cart_id).delete_all
+    else
+      # flash votre panier est vide
+      puts "YYYYYYYEEEEEEEAAAAAAAAHHHHHHH MTF"
+    end
   end
 
   private
