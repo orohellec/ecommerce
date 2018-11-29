@@ -6,9 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  after_create :send_admin_mail
-  def send_admin_mail
-    UserMailer.order(self).deliver
+  after_create :send_user_mail
+  def send_user_mail
+    UserMailer.welcome_mailer(self).deliver
   end
 
 end
+
+
+

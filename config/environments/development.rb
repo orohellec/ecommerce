@@ -60,6 +60,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.delivery_method = :mailjet
-  
+    
   config.action_mailer.perform_deliveries = true
 end

@@ -3,7 +3,7 @@
 Mailjet.configure do |config|
   config.api_key = Rails.application.credentials.dig(:mailjet, :public_key) 
   config.secret_key = Rails.application.credentials.dig(:mailjet, :secret_key) 
-  config.default_from = "a.tortai14@gmail.com"
+  config.default_from = "axelle.tortai@student.esc-rennes.com"
   # Mailjet API v3.1 is at the moment limited to Send API.
   # We’ve not set the version to it directly since there is no other endpoint in that version.
   # We recommend you create a dedicated instance of the wrapper set with it to send your emails.
