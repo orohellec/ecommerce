@@ -1,24 +1,46 @@
-# README
+Hello :heart:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Membres du groupe : 
 
-* Ruby version
+@Charlotte Houivet
+@Shayane Yakataly
+@Cyril Avronsart
+@Olivier Rohellec 
+@axelle trt 
 
-* System dependencies
 
-* Configuration
+Projet en production : https://miaoumiaou.herokuapp.com/
 
-* Database creation
+Le Action Mailer fonctionne en production et en local cela peut parfois prendre du temps à s'envoyer :) 
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Features disponibles
 
-* Deployment instructions
+- Front 
 
-* ...
+- Devise 
+
+- Création de compte 
+
+- Création de panier, récapitulatif de panier, total de panier 
+
+- Stripe
+
++ etc. 
+
+
+Installation en Local: :sparkles:
+
+1. Git clone 
+2. sudo bundle install 
+3. Supprimer credentials.ymlc 
+4. Lancer la commande EDITOR=vim rails credentials:edit
+5. Copier/coller les credentials que je te t'envoie en message sur slack 
+6. Sauvegarder le fichier credentials 
+7. Dé-commenter le code qui est dans initializer/stripe.rb et enregistrer. 
+8. rails db:create, rails db:migrate, rails db:seed 
+9. Rails server 
+
+
